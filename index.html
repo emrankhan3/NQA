@@ -91,39 +91,8 @@
     <div class="pair"><div class="bangla" onclick="toggleText(this)">একটি গাছ</div><div class="arabic" onclick="toggleText(this)">شَجَرَةٌ</div></div>
   </div>
 
-  <script>
-    // Toggle the text color for individual elements
-    function toggleText(div) {
-      if (div.classList.contains('invisible')) {
-        div.classList.remove('invisible');
-      } else {
-        div.classList.add('invisible');
-      }
-    }
-
-    // Show all text of a specific type
-    function showAll(type) {
-      const elements = document.querySelectorAll(`.${type}`);
-      elements.forEach(element => {
-        element.classList.remove('invisible');
-      });
-    }
-
-    // Hide all text of a specific type
-    function hideAll(type) {
-      const elements = document.querySelectorAll(`.${type}`);
-      elements.forEach(element => {
-        element.classList.add('invisible');
-      });
-    }
-
-    // Adjust text size based on slider value
-    function adjustTextSize(type, size) {
-      const elements = document.querySelectorAll(`.${type}`);
-      elements.forEach(element => {
-        element.style.fontSize = `${size}px`;
-      });
-    }
+  <script src="script.js">    // Toggle the text color for individual elements
+    
   </script>
 </body>
 </html>
