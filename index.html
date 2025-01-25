@@ -23,13 +23,13 @@
   
   
 </head>
-<body class="bg-[url(/image/bimg.jpg)]  font-sans">
+<body class="bg-gray-700  font-sans">
 
   <!-- Vue App -->
   <div id="app">
     
     <!-- Fixed Header -->
-    <header class="bg-gray-800  fixed top-0 left-0 w-full bg-white shadow-lg z-10 rounded rounded-2xl bg- ">
+    <header class="bg-gray-800  fixed top-0 left-0 w-full bg-white shadow-lg z-10 rounded-b-2xl bg- ">
       <div class="max-w-4xl mx-auto p-2 grid grid-cols-1 md:grid-cols-3 gap-2 items-center ">
         
         <!-- Others Section -->
@@ -51,11 +51,11 @@
         <!-- Text Size Adjustment -->
         <div class="Text-Size-Container grid grid-cols-1">
           <label for="banglaSize" class="flex items-center space-x-2">
-            <span class="text-xs font-medium text-red-700">Bangla Size:</span>
+            <span class="text-xs font-bold  text-red-700">Bangla Size:</span>
             <input type="range" id="banglaSize" v-model="banglaSize" min="12" max="40" class="w-20">
           </label>
           <label for="arabicSize" class="flex items-center space-x-2 mt-1">
-            <span class="text-xs font-medium text-red-700">Arabic Size:</span>
+            <span class="text-xs font-bold text-red-700">Arabic Size:</span>
             <input type="range" id="arabicSize" v-model="arabicSize" min="12" max="40" class="w-20">
           </label>
         </div>
@@ -121,13 +121,13 @@
 
     
     <!-- Content Section -->
-    <div class="opacity-90 mt-60  md:mt-36  max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg ">
+    <div class="bg-gray-600 mt-60  md:mt-36  max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg ">
       
       <!-- Vocabulary Items Section -->
       <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       
         <div
-        class="pair bg-white p-4 shadow-md rounded-lg flex justify-between items-center"
+        class="pair bg-gray-400 p-4 shadow-md rounded-lg flex justify-between items-center"
         v-for="(pair, index) in filteredVocabulary"
         :key="index">
         <div
@@ -138,6 +138,7 @@
           }"
           @click="toggleText(pair, 'bangla', $event)"
         >
+        <!-- done with style -->
           {{ pair.bangla }}
         </div>
         <div
