@@ -11,50 +11,60 @@
 <body class="bg-gray-100 font-sans">
 
   <!-- Vue App -->
-  <div id="app" class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-    <h1 class="text-2xl font-bold text-center text-gray-800 mb-8">শব্দার্থ সঙ্কলন</h1>
+  <div id="app">
+    
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-lg z-10">
+      <div class="max-w-4xl mx-auto p-4 flex flex-wrap justify-between items-center">
+        <h1 class="text-xl font-bold text-gray-800">শব্দার্থ সঙ্কলন</h1>
+        <div class="flex flex-wrap items-center space-x-4">
+          <!-- Text Size Controllers -->
+          <label for="banglaSize" class="flex items-center space-x-2">
+            <span class="text-sm font-medium text-gray-700">Bangla Size:</span>
+            <input type="range" id="banglaSize" v-model="banglaSize" min="12" max="40" class="w-24">
+          </label>
+          <label for="arabicSize" class="flex items-center space-x-2">
+            <span class="text-sm font-medium text-gray-700">Arabic Size:</span>
+            <input type="range" id="arabicSize" v-model="arabicSize" min="12" max="40" class="w-24">
+          </label>
 
-    <!-- Controls Section -->
-    <div class="controls mb-6">
-      <label for="banglaSize" class="block text-sm font-medium text-gray-700 mb-2">Bangla Text Size:</label>
-      <input type="range" id="banglaSize" v-model="banglaSize" min="12" max="40" class="w-full mb-4">
-
-      <label for="arabicSize" class="block text-sm font-medium text-gray-700 mb-2">Arabic Text Size:</label>
-      <input type="range" id="arabicSize" v-model="arabicSize" min="12" max="40" class="w-full mb-4">
-
-      <div class="flex space-x-4">
-        <button @click="showAll('bangla')" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Show All Bangla</button>
-        <button @click="hideAll('bangla')" class="bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-600">Hide All Bangla</button>
-        <button @click="showAll('arabic')" class="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600">Show All Arabic</button>
-        <button @click="hideAll('arabic')" class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600">Hide All Arabic</button>
-      </div>
-    </div>
-
-    <!-- Vocabulary Items Section -->
-    <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div
-        class="pair bg-white p-4 shadow-md rounded-lg flex justify-between items-center"
-        v-for="(pair, index) in vocabulary"
-        :key="index">
-        <div
-          class="bangla bg-gray-100 p-2 rounded text-center cursor-pointer transition-transform transform hover:scale-105"
-          :style="{
-            fontSize: banglaSize + 'px',
-            color: pair.showBangla ? '' : pair.banglaBgColor
-          }"
-          @click="toggleText(pair, 'bangla', $event)"
-        >
-          {{ pair.bangla }}
+          <!-- Hide/Unhide Controls -->
+          <button @click="showAll('bangla')" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Show All Bangla</button>
+          <button @click="hideAll('bangla')" class="bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-600">Hide All Bangla</button>
+          <button @click="showAll('arabic')" class="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600">Show All Arabic</button>
+          <button @click="hideAll('arabic')" class="bg-yellow-500 text-white px-4 py-2 rounded shadow hover:bg-yellow-600">Hide All Arabic</button>
         </div>
+      </div>
+    </header>
+    
+    <!-- Content Section -->
+    <div class="mt-24 max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg">
+      <!-- Vocabulary Items Section -->
+      <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div
-          class="arabic bg-blue-100 p-2 rounded text-center cursor-pointer transition-transform transform hover:scale-105"
-          :style="{
-            fontSize: arabicSize + 'px',
-            color: pair.showArabic ? '' : pair.arabicBgColor
-          }"
-          @click="toggleText(pair, 'arabic', $event)"
-        >
-          {{ pair.arabic }}
+          class="pair bg-white p-4 shadow-md rounded-lg flex justify-between items-center"
+          v-for="(pair, index) in vocabulary"
+          :key="index">
+          <div
+            class="bangla bg-gray-100 p-2 rounded text-center cursor-pointer transition-transform transform hover:scale-105"
+            :style="{
+              fontSize: banglaSize + 'px',
+              color: pair.showBangla ? '' : pair.banglaBgColor
+            }"
+            @click="toggleText(pair, 'bangla', $event)"
+          >
+            {{ pair.bangla }}
+          </div>
+          <div
+            class="arabic bg-blue-100 p-2 rounded text-center cursor-pointer transition-transform transform hover:scale-105"
+            :style="{
+              fontSize: arabicSize + 'px',
+              color: pair.showArabic ? '' : pair.arabicBgColor
+            }"
+            @click="toggleText(pair, 'arabic', $event)"
+          >
+            {{ pair.arabic }}
+          </div>
         </div>
       </div>
     </div>
@@ -68,7 +78,7 @@
           banglaSize: 16,
           arabicSize: 16,
           vocabulary: [
-            { bangla: 'একটি বই', arabic: 'كِتَابٌ', showBangla: true, showArabic: true },
+          { bangla: 'একটি বই', arabic: 'كِتَابٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি কলম', arabic: 'قَلَمٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি ঘর', arabic: 'بَيْتٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি চেয়ার', arabic: 'كُرْسِيٌّ', showBangla: true, showArabic: true },
@@ -92,10 +102,14 @@
 
           if (type === 'bangla') {
             pair.showBangla = !pair.showBangla;
-            pair.banglaBgColor = backgroundColor; // Save background color
+            if (!pair.showBangla) {
+              pair.banglaBgColor = backgroundColor;
+            }
           } else if (type === 'arabic') {
             pair.showArabic = !pair.showArabic;
-            pair.arabicBgColor = backgroundColor; // Save background color
+            if (!pair.showArabic) {
+              pair.arabicBgColor = backgroundColor;
+            }
           }
         },
         showAll(type) {
@@ -106,9 +120,18 @@
         },
         hideAll(type) {
           this.vocabulary.forEach((pair) => {
-            if (type === 'bangla') pair.showBangla = false;
-            if (type === 'arabic') pair.showArabic = false;
+            if (type === 'bangla') {
+              pair.showBangla = false;
+              pair.banglaBgColor = this.getDefaultBackgroundColor('bangla');
+            }
+            if (type === 'arabic') {
+              pair.showArabic = false;
+              pair.arabicBgColor = this.getDefaultBackgroundColor('arabic');
+            }
           });
+        },
+        getDefaultBackgroundColor(type) {
+          return type === 'bangla' ? 'rgb(243, 244, 246)' : 'rgb(219, 234, 254)';
         }
       }
     });
