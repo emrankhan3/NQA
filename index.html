@@ -7,6 +7,19 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <title>حىّ عل العربية</title>
+  <style>
+    .theme-light {
+      background-color: white;
+      color: black;
+    }
+  
+    .theme-dark {
+      background-color: black;
+      color: white;
+    }
+  </style>
+  
+  
 </head>
 <body class="bg-gray-100 font-sans">
 
@@ -18,8 +31,10 @@
       <div class="max-w-4xl mx-auto p-2 grid grid-cols-1 md:grid-cols-3 gap-2 items-center">
         
         <!-- Others Section -->
-        <div class="Logo-Container">
+        <div class="Logo-Container flex items-center justify-between">
           <h1 class="text-lg font-bold text-gray-800">শব্দার্থ সঙ্কলন</h1>
+    
+         
         </div>
     
         <!-- Text Size Adjustment -->
@@ -128,10 +143,13 @@
   </div>
 
   <!-- Vue App Script -->
-  <script>
+  <script src="./script.js">
+    import {lessons} from './lessons.js';
     const app = Vue.createApp({
       data() {
-        return {
+        return { themes: ['Light', 'Dark', 'Solarized', 'Pastel', 'High Contrast'], // Theme options
+    showThemeDropdown: false, // Controls visibility of the dropdown
+    currentTheme: 'Light',
           banglaSize: 16,
           arabicSize: 16,
           activeLesson: 1, // Current active lesson
@@ -534,6 +552,35 @@
 
 ,
       methods: {
+        toggleThemeDropdown() {
+    this.showThemeDropdown = !this.showThemeDropdown;
+  },
+  applyTheme(theme) {
+    this.currentTheme = theme;
+    this.showThemeDropdown = false;
+
+    // Remove all theme-related classes from the body
+    document.body.className = '';
+    
+    // Apply the selected theme class
+    switch (theme) {
+      case 'Light':
+        document.body.classList.add('theme-light');
+        break;
+      case 'Dark':
+        document.body.classList.add('theme-dark');
+        break;
+      case 'Solarized':
+        document.body.classList.add('theme-solarized');
+        break;
+      case 'Pastel':
+        document.body.classList.add('theme-pastel');
+        break;
+      case 'High Contrast':
+        document.body.classList.add('theme-high-contrast');
+        break;
+    }
+  },
         loadLesson(lessonId) {
           const selectedLesson = this.lessons.find(lesson => lesson.id === lessonId);
           if (selectedLesson) {
