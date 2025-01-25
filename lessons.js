@@ -1,13 +1,4 @@
-
-const app = Vue.createApp({
-  data() {
-    return { themes: ['Light', 'Dark', 'Solarized', 'Pastel', 'High Contrast'], // Theme options
-showThemeDropdown: false, // Controls visibility of the dropdown
-currentTheme: 'Light',
-      banglaSize: 16,
-      arabicSize: 16,
-      activeLesson: 1, // Current active lesson
-      lessons: [
+export const lessons =[
         {
           id: 1,
           vocabulary: [
@@ -46,7 +37,6 @@ currentTheme: 'Light',
             { bangla: 'হ্যাঁ', arabic: 'نَعَمْ', showBangla: true, showArabic: true },
             { bangla: 'না', arabic: 'لَا', showBangla: true, showArabic: true }
           ]
-
         },
         {
           id: 2,
@@ -364,134 +354,6 @@ vocabulary: [
 { bangla: 'অধিক', arabic: 'أَكْثَرُ', showBangla: true, showArabic: true },
 { bangla: 'আল্লাহর কাছে সবচেয়ে প্রিয়', arabic: 'أَحَبُّ إِلَى اللهِ', showBangla: true, showArabic: true }
 ]
-
-}
-      ],
-      vocabulary: [] // Current vocabulary to display
-    };
-  },
-  computed: {
-paginatedButtons() {
-const total = this.lessons.length;
-const current = this.activeLesson;
-const range = 5; // Maximum number of buttons to show in the range
-const buttons = [];
-
-if (total <= range) {
-  // If total lessons are less than or equal to the range, show all lessons
-  for (let i = 1; i <= total; i++) buttons.push(i);
-} else {
-  // Add the first lesson (always visible)
-  if (current > 3) {
-    buttons.push(1); // Include the first lesson
-    if (current > 4) buttons.push('...'); // Add ellipsis for skipped lessons
-  }
-
-  // Add the current lesson and up to 2 lessons before and after it
-  for (let i = Math.max(1, current - 2); i <= Math.min(total, current + 2); i++) {
-    buttons.push(i);
-  }
-
-  // Add the last lesson (always visible)
-  if (current < total - 2) {
-    if (current < total - 3) buttons.push('...'); // Add ellipsis for skipped lessons
-    buttons.push(total); // Include the last lesson
-  }
-}
-
-return buttons;
-}
-}
-
-
-,
-  methods: {
-    toggleThemeDropdown() {
-this.showThemeDropdown = !this.showThemeDropdown;
 },
-applyTheme(theme) {
-this.currentTheme = theme;
-this.showThemeDropdown = false;
-
-// Remove all theme-related classes from the body
-document.body.className = '';
-
-// Apply the selected theme class
-switch (theme) {
-  case 'Light':
-    document.body.classList.add('theme-light');
-    break;
-  case 'Dark':
-    document.body.classList.add('theme-dark');
-    break;
-  case 'Solarized':
-    document.body.classList.add('theme-solarized');
-    break;
-  case 'Pastel':
-    document.body.classList.add('theme-pastel');
-    break;
-  case 'High Contrast':
-    document.body.classList.add('theme-high-contrast');
-    break;
-}
-},
-    loadLesson(lessonId) {
-      const selectedLesson = this.lessons.find(lesson => lesson.id === lessonId);
-      if (selectedLesson) {
-        this.vocabulary = JSON.parse(JSON.stringify(selectedLesson.vocabulary)); // Deep copy
-        this.activeLesson = lessonId;
-      }
-    },
-    prevLesson() {
-if (this.activeLesson > 1) {
-  this.loadLesson(this.activeLesson - 1);
-}
-},
-nextLesson() {
-if (this.activeLesson < this.lessons.length) {
-  this.loadLesson(this.activeLesson + 1);
-}
-},
-    toggleText(pair, type, event) {
-      const backgroundColor = window.getComputedStyle(event.target).backgroundColor;
-
-      if (type === 'bangla') {
-        pair.showBangla = !pair.showBangla;
-        if (!pair.showBangla) {
-          pair.banglaBgColor = backgroundColor;
-        }
-      } else if (type === 'arabic') {
-        pair.showArabic = !pair.showArabic;
-        if (!pair.showArabic) {
-          pair.arabicBgColor = backgroundColor;
-        }
-      }
-    },
-    showAll(type) {
-      this.vocabulary.forEach(pair => {
-        if (type === 'bangla') pair.showBangla = true;
-        if (type === 'arabic') pair.showArabic = true;
-      });
-    },
-    hideAll(type) {
-      this.vocabulary.forEach(pair => {
-        if (type === 'bangla') {
-          pair.showBangla = false;
-          pair.banglaBgColor = this.getDefaultBackgroundColor('bangla');
-        }
-        if (type === 'arabic') {
-          pair.showArabic = false;
-          pair.arabicBgColor = this.getDefaultBackgroundColor('arabic');
-        }
-      });
-    },
-    getDefaultBackgroundColor(type) {
-      return type === 'bangla' ? 'rgb(243, 244, 246)' : 'rgb(219, 234, 254)';
-    }
-  },
-  created() {
-    this.loadLesson(1); // Load Lesson 1 by default
-  }
-});
-
-app.mount('#app');
+  ];
+     
