@@ -1,9 +1,10 @@
 
 const app = Vue.createApp({
   data() {
-    return { themes: ['Light', 'Dark', 'Solarized', 'Pastel', 'High Contrast'], // Theme options
-showThemeDropdown: false, // Controls visibility of the dropdown
-currentTheme: 'Light',
+    return { 
+      
+      
+       searchQuery: '',
       banglaSize: 16,
       arabicSize: 16,
       activeLesson: 1, // Current active lesson
@@ -371,6 +372,14 @@ vocabulary: [
     };
   },
   computed: {
+    filteredVocabulary() {
+      const query = this.searchQuery.toLowerCase();
+      return this.vocabulary.filter(
+        pair =>
+          pair.bangla.toLowerCase().includes(query) ||
+          pair.arabic.toLowerCase().includes(query)
+      );
+    },
 paginatedButtons() {
 const total = this.lessons.length;
 const current = this.activeLesson;
@@ -406,35 +415,8 @@ return buttons;
 
 ,
   methods: {
-    toggleThemeDropdown() {
-this.showThemeDropdown = !this.showThemeDropdown;
-},
-applyTheme(theme) {
-this.currentTheme = theme;
-this.showThemeDropdown = false;
+ 
 
-// Remove all theme-related classes from the body
-document.body.className = '';
-
-// Apply the selected theme class
-switch (theme) {
-  case 'Light':
-    document.body.classList.add('theme-light');
-    break;
-  case 'Dark':
-    document.body.classList.add('theme-dark');
-    break;
-  case 'Solarized':
-    document.body.classList.add('theme-solarized');
-    break;
-  case 'Pastel':
-    document.body.classList.add('theme-pastel');
-    break;
-  case 'High Contrast':
-    document.body.classList.add('theme-high-contrast');
-    break;
-}
-},
     loadLesson(lessonId) {
       const selectedLesson = this.lessons.find(lesson => lesson.id === lessonId);
       if (selectedLesson) {
