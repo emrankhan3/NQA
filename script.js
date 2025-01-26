@@ -6,7 +6,7 @@ const app = Vue.createApp({
       
        searchQuery: '',
       banglaSize: 16,
-      arabicSize: 16,
+      arabicSize: 26,
       activeLesson: 1, // Current active lesson
       lessons: [
         {
@@ -30,7 +30,7 @@ const app = Vue.createApp({
             { bangla: 'একটি ফুল', arabic: 'زَهْرَةٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি আকাশ', arabic: 'سَمَاءٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি জমি/পৃথিবী', arabic: 'أَرْضٌ', showBangla: true, showArabic: true },
-            { bangla: 'একটি সময়', arabic: 'وَقْتٌ', showBangla: true, showArabic: true },
+            { bangla: 'একটি মেয়ে', arabic: 'بِنْتٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি ঘড়ি (কিয়ামত)', arabic: 'سَاعَةٌ', showBangla: true, showArabic: true },
             { bangla: 'একজন পুরুষ', arabic: 'رَجُلٌ', showBangla: true, showArabic: true },
             { bangla: 'একজন মহিলা', arabic: 'اِمْرَأَةٌ', showBangla: true, showArabic: true },
@@ -40,7 +40,7 @@ const app = Vue.createApp({
             { bangla: 'অন্ধকার', arabic: 'ظُلْمَةٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি নদী', arabic: 'نَهْرٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি সমুদ্র', arabic: 'بَحْرٌ', showBangla: true, showArabic: true },
-            { bangla: 'একটি কামরা', arabic: 'غُرْفَةٌ', showBangla: true, showArabic: true },
+            { bangla: 'একটি কামরা', arabic: 'حُجْرَةٌ-غُرْفَةٌ', showBangla: true, showArabic: true },
             { bangla: 'বরং', arabic: 'بَلْ', showBangla: true, showArabic: true },
             { bangla: 'কী?', arabic: 'مَا؟', showBangla: true, showArabic: true },
             { bangla: 'কি?', arabic: 'هَلْ؟', showBangla: true, showArabic: true },
@@ -52,31 +52,31 @@ const app = Vue.createApp({
         {
           id: 2,
           vocabulary: [
-                          { bangla: 'বড়', arabic: 'كِبِيرٌ - كِبِيرَةٌ', showBangla: true, showArabic: true },
+                          { bangla: 'বড়', arabic: 'كَبِيْرٌ - كَبِيْرَةٌ', showBangla: true, showArabic: true },
                           { bangla: 'ছোট', arabic: 'صَغِيرٌ - صَغِيرَةٌ', showBangla: true, showArabic: true },
                           { bangla: 'সুন্দর', arabic: 'جَمِيلٌ - جَمِيلَةٌ', showBangla: true, showArabic: true },
                           { bangla: 'ভাল', arabic: 'جَيِّدٌ - جَيِّدَةٌ', showBangla: true, showArabic: true },
                           { bangla: 'নতুন', arabic: 'جَدِيدٌ - جَدِيدَةٌ', showBangla: true, showArabic: true },
                           { bangla: 'পুরোনো', arabic: 'قَدِيمٌ - قَدِيمَةٌ', showBangla: true, showArabic: true },
                           { bangla: 'কেমন?', arabic: 'كَيْفَ؟', showBangla: true, showArabic: true },
-                          { bangla: 'সৎ', arabic: 'صَلَاحٌ', showBangla: true, showArabic: true },
-                          { bangla: 'জ্ঞানী', arabic: 'أَلِيمٌ', showBangla: true, showArabic: true },
+                          { bangla: 'নেককার/সৎ', arabic: 'صَالِحٌ', showBangla: true, showArabic: true },
+                          { bangla: 'যন্ত্রনাদায়ক', arabic: 'أَلِيمٌ', showBangla: true, showArabic: true },
                           { bangla: 'ভদ্র', arabic: 'مُؤَدَّبٌ', showBangla: true, showArabic: true },
-                          { bangla: 'শান্তি', arabic: 'عِذَابٌ', showBangla: true, showArabic: true },
+                          { bangla: 'শাস্তি', arabic: 'عِذَابٌ', showBangla: true, showArabic: true },
                           { bangla: 'কর্ম/আমল', arabic: 'عَمَلٌ', showBangla: true, showArabic: true },
                           { bangla: 'ছাত্র', arabic: 'تِلْمِيذٌ', showBangla: true, showArabic: true },
                           { bangla: 'ছাত্রী', arabic: 'تِلْمِيذَةٌ', showBangla: true, showArabic: true },
                           { bangla: 'শিক্ষক', arabic: 'مُعَلِّمٌ', showBangla: true, showArabic: true },
                           { bangla: 'শিক্ষিকা', arabic: 'مُعَلِّمَةٌ', showBangla: true, showArabic: true },
-                          { bangla: 'প্রশিক্ষণ', arabic: 'وَاسِعٌ', showBangla: true, showArabic: true },
+                          { bangla: 'প্রশস্ত', arabic: 'وَاسِعٌ', showBangla: true, showArabic: true },
                           { bangla: 'সংকীর্ণ', arabic: 'ضَيِّقٌ', showBangla: true, showArabic: true },
                           { bangla: 'লম্বা', arabic: 'طَوِيلٌ', showBangla: true, showArabic: true },
                           { bangla: 'খাটো', arabic: 'قَصِيرٌ', showBangla: true, showArabic: true },
-                          { bangla: 'একটি টেবিল', arabic: 'فَرْشَةٌ', showBangla: true, showArabic: true },
+                          { bangla: 'একটি বিছানা', arabic: 'فِرَاشٌ', showBangla: true, showArabic: true },
                           { bangla: 'একটি বাগান', arabic: 'حَدِيقَةٌ - جَنَّةٌ', showBangla: true, showArabic: true },
                           { bangla: 'একটি জামা', arabic: 'قَمِيصٌ', showBangla: true, showArabic: true },
-                          { bangla: 'একটি পায়জামা', arabic: 'لِبَاسٌ', showBangla: true, showArabic: true },
-                          { bangla: 'একটি বাজার', arabic: 'سُوقٌ', showBangla: true, showArabic: true },
+                          { bangla: 'একটি পোশাক', arabic: 'لِبَاسٌ', showBangla: true, showArabic: true },
+                          { bangla: 'একটি বাজার', arabic: 'سُوْقٌ', showBangla: true, showArabic: true },
                           { bangla: 'একটি রাস্তা', arabic: 'طَرِيقٌ', showBangla: true, showArabic: true }
                         ]
 
@@ -93,7 +93,7 @@ const app = Vue.createApp({
                       { bangla: 'ধনী', arabic: 'غَنِيٌّ - غَنِيَّةٌ', showBangla: true, showArabic: true },
                       { bangla: 'গরিব', arabic: 'فَقِيرٌ - فَقِيرَةٌ', showBangla: true, showArabic: true },
                       { bangla: 'মেধাবী', arabic: 'ذَكِيٌّ - ذَكِيَّةٌ', showBangla: true, showArabic: true },
-                      { bangla: 'অবিবেচক', arabic: 'غَبِيٌّ - غَبِيَّةٌ', showBangla: true, showArabic: true },
+                      { bangla: 'নির্বোধ/অবিবেচক/ছাত্রলীগ', arabic: 'غَبِيٌّ - غَبِيَّةٌ', showBangla: true, showArabic: true },
                       { bangla: 'পরিশ্রমী', arabic: 'مُجْتَهِدٌ', showBangla: true, showArabic: true },
                       { bangla: 'উপকারী', arabic: 'مُفِيدٌ', showBangla: true, showArabic: true },
                       { bangla: 'সুস্থ', arabic: 'صَحِيحٌ', showBangla: true, showArabic: true },
@@ -102,7 +102,7 @@ const app = Vue.createApp({
                       { bangla: 'খোলা', arabic: 'مَفْتُوحٌ', showBangla: true, showArabic: true },
                       { bangla: 'দুর্বল', arabic: 'ضَعِيفٌ', showBangla: true, showArabic: true },
                       { bangla: 'শক্তিশালী/মজবুত', arabic: 'قَوِيٌّ', showBangla: true, showArabic: true },
-                      { bangla: 'কি?', arabic: 'مَاذَا؟', showBangla: true, showArabic: true },
+                      { bangla: 'কে?', arabic: 'مَنْ؟', showBangla: true, showArabic: true },
                       { bangla: 'প্রসিদ্ধ', arabic: 'مَشْهُورٌ', showBangla: true, showArabic: true }
                     ]
 
