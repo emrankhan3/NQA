@@ -29,7 +29,7 @@ const app = Vue.createApp({
             { bangla: 'একটি ফল', arabic: 'فَاكِهَةٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি ফুল', arabic: 'زَهْرَةٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি আকাশ', arabic: 'سَمَاءٌ', showBangla: true, showArabic: true },
-            { bangla: 'একটি জমি/পৃথিবী', arabic: 'أَرْضٌ', showBangla: true, showArabic: true },
+            { bangla: 'একটি জমিন/পৃথিবী', arabic: 'أَرْضٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি মেয়ে', arabic: 'بِنْتٌ', showBangla: true, showArabic: true },
             { bangla: 'একটি ঘড়ি (কিয়ামত)', arabic: 'سَاعَةٌ', showBangla: true, showArabic: true },
             { bangla: 'একজন পুরুষ', arabic: 'رَجُلٌ', showBangla: true, showArabic: true },
